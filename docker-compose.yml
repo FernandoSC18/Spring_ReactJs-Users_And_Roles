@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  users_and_roles:
+    container_name: users_and_roles 
+    build:
+      context: .
+      dockerfile: Dockerfile.app 
+    depends_on:
+      db_mysql:
+        condition: service_healthy 
+    ports: 
+      - "8080:8080" 
+    links:
+      - db_mysql
+  db_mysql:
+    container_name: db_mysql 
+    healthcheck:
+      test: "exit 0"
+    command: mysqld
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+      - "3306:33060"
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret-password
+      - MYSQL_DATABASE=users_and_roles
+    volumes:
+      - mysql-data:/var/lib/mysql 
+volumes:
+  mysql-data:

@@ -1,0 +1,2 @@
+FROM mysql   
+ADD users_and_roles.sql /docker-entrypoint-initdb.d

@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE' 
+	id 'java'
+	id 'war'
+}
+
+group = 'com.fernando'
+version = '1'
+sourceCompatibility = '8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.2'
+	implementation 'javax.persistence:javax.persistence-api:2.2'
+	implementation 'org.springframework:spring-tx:5.3.22'
+	implementation 'org.springframework.hateoas:spring-hateoas:1.5.1' 
+ 
+	//Security
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.7.2'
+	implementation 'org.springframework.security:spring-security-core:5.7.2'
+	implementation 'org.springframework.security:spring-security-config:5.7.2' 
+
+	//JWT utils 
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	providedRuntime 'io.jsonwebtoken:jjwt-impl:0.11.5'  
+	providedRuntime 'io.jsonwebtoken:jjwt-jackson:0.11.5'  
+
+	//MySql conector
+	providedRuntime 'mysql:mysql-connector-java:8.0.30' 
+	
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.7.2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.2' 
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class" // whatever Ant pattern matches your test class files
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

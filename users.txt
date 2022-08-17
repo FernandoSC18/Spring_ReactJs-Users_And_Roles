@@ -1,0 +1,16 @@
+##### USERS #####
+--------------------------------------------------------------
+user/email: dev@dev.com
+password: R9!GaCxrNH
+description: Usuario que contiene todos los roles por defecto 
+y acceso a todas las pantallas y metodos del api rest
+---------------------------------------------------------------
+user/email: admin@admin.com
+password: T2%%lEjII%
+description: Usuario que contiene la mayoria de los roles por defecto 
+a excepcion de las configuraciones
+---------------------------------------------------------------
+user/email: user@user.com
+password: x8%03OWaoe
+description: Usuario registrado con acceso limitado a vizualizar usuarios
+---------------------------------------------------------------
